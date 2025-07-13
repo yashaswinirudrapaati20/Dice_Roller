@@ -1,30 +1,546 @@
-#container{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
+body {
+    font-family: 'Bangers', 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Comic Neue', cursive, sans-serif;
+    background: none;
 }
+
+#container{
+    font-family: 'Segoe UI', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 500;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(6px) saturate(180%);
+    -webkit-backdrop-filter: blur(6px) saturate(180%);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    margin: 40px auto;
+    padding: 32px 24px;
+    max-width: 500px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 0 6px #ffd700, 0 0 40px 10px #fff176cc, 0 0 80px 20px #ffd70088, 0 12px 48px #ffec8b88;
+    animation: glowPulse 2.5s alternate infinite;
+    border-radius: 24px;
+    border: 6px solid transparent;
+    background: linear-gradient(135deg, #fffbe7 80%, #fff176 100%);
+    margin-top: 40px;
+    margin-bottom: 40px;
+    outline: 8px solid #ffd700;
+    outline-offset: 10px;
+    box-sizing: border-box;
+    /* Comic jagged border effect */
+    clip-path: polygon(0% 8%, 6% 0%, 94% 0%, 100% 8%, 100% 92%, 94% 100%, 6% 100%, 0% 92%);
+    filter: drop-shadow(0 8px 32px #ffd70099);
+    background-clip: padding-box;
+}
+#container::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    z-index: -1;
+    border-radius: 32px;
+    background: conic-gradient(from 0deg, #fffbe7 0%, #ffd700 25%, #fff176 50%, #ffd700 75%, #fffbe7 100%);
+    filter: blur(8px) brightness(1.2) saturate(1.2);
+    opacity: 0.7;
+    pointer-events: none;
+    animation: godAura 4s linear infinite;
+}
+@keyframes godAura {
+    0% { filter: blur(8px) brightness(1.2) saturate(1.2); opacity: 0.7; }
+    50% { filter: blur(16px) brightness(1.4) saturate(1.4); opacity: 1; }
+    100% { filter: blur(8px) brightness(1.2) saturate(1.2); opacity: 0.7; }
+}
+
+h1, label {
+    font-family: 'Bangers', 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Comic Neue', cursive, sans-serif;
+    color: #222;
+    text-shadow: 2px 2px 0 #fff176, 4px 4px 0 #222, 0 0 8px #fff;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
 button{
-    font-size: 1.5rem;
-    padding: 10px 15px;
-    border-radius: 10px;
-    border-color: black;
-    border-width: 2.5px;
-    background-color: rgb(68, 115, 255);
-    color: white;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Bangers', 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Comic Neue', cursive, sans-serif;
+    font-size: 2rem;
+    padding: 14px 36px;
+    border-radius: 18px;
+    border: 4px solid #222;
+    background: linear-gradient(90deg, #fff176 0%, #ff5e62 100%);
+    color: #222;
+    font-weight: 900;
+    box-shadow: 2px 2px 0 #222, 4px 4px 0 #fff176, 0 8px 24px #ff5e6299;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     cursor: pointer;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
 }
 button:hover{
-    background-color:  rgb(68, 135, 255);;
+    background: linear-gradient(90deg, #ff5e62 0%, #fff176 100%);
+    color: #fff;
+    transform: scale(1.08) rotate(-2deg);
+    box-shadow: 4px 4px 0 #222, 8px 8px 0 #fff176;
 }
 button:active{
-    background-color:  rgb(68, 145, 255);;
+    background: #222;
+    color: #fff176;
+    transform: scale(0.98) rotate(1deg);
+    box-shadow: 1px 1px 0 #222, 2px 2px 0 #fff176;
+}
+button::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -60%;
+    width: 60%; height: 100%;
+    background: linear-gradient(120deg, #fff8 0%, #fff0 100%);
+    transform: skewX(-24deg);
+    opacity: 0.7;
+    pointer-events: none;
+    animation: glint 2.5s infinite linear;
+}
+@keyframes glint {
+    0% { left: -60%; }
+    80% { left: 110%; }
+    100% { left: 110%; }
 }
 input{
+    font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Comic Neue', cursive, sans-serif;
     font-size: 2rem;
-    width: 150px;
+    width: 180px;
     text-align: center;
-    font-weight: bold;
-    
+    font-weight: 700;
+    border-radius: 10px;
+    border: 3px solid #222;
+    background: #fffbe7;
+    color: #222;
+    box-shadow: 2px 2px 0 #222;
+    margin: 18px 0;
+    padding: 10px 16px;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+input:focus, input:hover {
+    background: #fff176;
+    box-shadow: 4px 4px 0 #222;
+    outline: none;
+}
+::-webkit-input-placeholder { color: #b0b0b0; }
+::-moz-placeholder { color: #b0b0b0; }
+:-ms-input-placeholder { color: #b0b0b0; }
+::placeholder { color: #b0b0b0; }
+
+/* Comic Pop-Art Background */
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    background: radial-gradient(circle at 20% 30%, #fff176 0 120px, transparent 120px),
+                radial-gradient(circle at 80% 60%, #ff5e62 0 120px, transparent 120px),
+                radial-gradient(circle at 50% 80%, #38f9d7 0 120px, transparent 120px),
+                #fffbe7;
+    overflow: hidden;
+}
+.animated-bg::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Bold halftone dots */
+    background-image: repeating-radial-gradient(circle, #222 0 2.5px, transparent 2.5px 22px), repeating-radial-gradient(circle, #ff5e62 0 2px, transparent 2px 16px);
+    background-size: 32px 32px, 64px 64px;
+    opacity: 0.22;
+    pointer-events: none;
+    z-index: 1;
+    animation: comicDots 10s linear infinite;
+}
+.animated-bg::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Comic zig-zag lines and grid */
+    background:
+      repeating-linear-gradient(135deg, #222 0 2px, transparent 2px 24px),
+      repeating-linear-gradient(45deg, #ff5e62 0 2px, transparent 2px 32px),
+      repeating-linear-gradient(0deg, #fff17644 0 1px, transparent 1px 32px),
+      repeating-linear-gradient(90deg, #38f9d744 0 1px, transparent 1px 32px);
+    opacity: 0.13;
+    pointer-events: none;
+    z-index: 2;
+    animation: comicZigZag 16s linear infinite;
+}
+.animated-bg .comic-words {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 3;
+    overflow: hidden;
+}
+.animated-bg .comic-words span {
+    position: absolute;
+    font-family: 'Bangers', 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Comic Neue', cursive, sans-serif;
+    font-size: 7vw;
+    font-weight: 900;
+    color: #ff5e62cc;
+    text-shadow: 4px 4px 0 #222, 0 0 24px #fff17699;
+    opacity: 0.18;
+    filter: blur(0.5px) drop-shadow(0 2px 8px #fff17699);
+    transform: rotate(-12deg);
+    user-select: none;
+    white-space: nowrap;
+    animation: comicWordFloat 12s linear infinite;
+}
+.animated-bg .comic-words span:nth-child(2) {
+    top: 30vh; left: 60vw;
+    color: #fff176cc;
+    font-size: 8vw;
+    transform: rotate(8deg) scale(1.1);
+    filter: blur(0.5px) drop-shadow(0 2px 8px #ff5e6299);
+    animation-delay: 2s;
+}
+.animated-bg .comic-words span:nth-child(3) {
+    top: 60vh; left: 10vw;
+    color: #38f9d7cc;
+    font-size: 6vw;
+    transform: rotate(-18deg) scale(1.08);
+    filter: blur(0.5px) drop-shadow(0 2px 8px #2228);
+    animation-delay: 4s;
+}
+@keyframes comicDots {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 120px 120px, 60px 60px; }
+}
+@keyframes comicZigZag {
+    0% { background-position: 0 0, 0 0, 0 0, 0 0; }
+    100% { background-position: 120px 120px, 60px 60px, 0 32px, 32px 0; }
+}
+@keyframes comicWordFloat {
+    0% { opacity: 0.18; transform: translateY(0) scale(1) rotate(-12deg); }
+    50% { opacity: 0.28; transform: translateY(-18px) scale(1.08) rotate(-12deg); }
+    100% { opacity: 0.18; transform: translateY(0) scale(1) rotate(-12deg); }
+}
+
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 40px 10px #fff17655, 0 0 80px 10px #00f2fe33; }
+    100% { box-shadow: 0 0 80px 20px #ff5e6299, 0 0 120px 30px #4facfe55; }
+}
+
+#diceImages {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+    background: repeating-linear-gradient(135deg, #fffbe7 0 10px, #fff176 10px 20px);
+    border: 4px solid #222;
+    border-radius: 24px 24px 40px 24px;
+    box-shadow: 0 6px 0 #ff5e62, 0 0 0 8px #222, 0 0 24px #fff17699, 0 8px 32px #2224;
+    padding: 18px 24px 28px 24px;
+    position: relative;
+    overflow: visible;
+}
+#diceImages img {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    box-shadow: 2px 2px 8px #2226, 0 0 0 4px #fffbe7;
+    background: #fffbe7;
+    border: 2px solid #222;
+    transition: transform 0.15s, box-shadow 0.2s;
+    position: relative;
+}
+#diceImages img::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 8px; left: 12px;
+    width: 28px; height: 12px;
+    background: linear-gradient(90deg, #fff8, #fff0 80%);
+    border-radius: 8px 8px 12px 12px;
+    opacity: 0.7;
+    pointer-events: none;
+}
+#diceImages img:hover {
+    transform: scale(1.12) rotate(-6deg);
+    box-shadow: 4px 4px 16px #ff5e6299, 0 0 0 6px #fffbe7;
+}
+#diceResult {
+    font-family: 'Bangers', 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Comic Neue', cursive, sans-serif;
+    font-size: 2rem;
+    color: #ff5e62;
+    text-shadow: 2px 2px 0 #222, 0 0 8px #fff176;
+    margin-top: 18px;
+    margin-bottom: 0;
+    letter-spacing: 2px;
+    background: #fffbe7;
+    border: 3px solid #222;
+    border-radius: 32px 32px 32px 0;
+    display: inline-block;
+    padding: 16px 32px 16px 24px;
+    box-shadow: 2px 2px 0 #222, 0 0 12px #fff17699, 0 8px 24px #ff5e6299;
+    transform: rotate(-2deg);
+    position: relative;
+    filter: drop-shadow(0 4px 16px #ff5e6299);
+    animation: popBubble 0.7s cubic-bezier(.36,.07,.19,.97);
+}
+#diceResult::after {
+    content: '';
+    position: absolute;
+    left: 18px;
+    bottom: -24px;
+    width: 32px;
+    height: 32px;
+    background: #fffbe7;
+    border: 3px solid #222;
+    border-top: none;
+    border-right: none;
+    border-radius: 0 0 0 32px;
+    box-shadow: 2px 2px 0 #222;
+    transform: rotate(-18deg);
+}
+@keyframes popBubble {
+    0% { transform: scale(0.7) rotate(-2deg); opacity: 0; }
+    60% { transform: scale(1.15) rotate(-2deg); opacity: 1; }
+    100% { transform: scale(1) rotate(-2deg); opacity: 1; }
+}
+.comic-burst {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    transform: translate(-50%, -54%) scale(1.1);
+    z-index: 0;
+    pointer-events: none;
+    background: repeating-conic-gradient(from 0deg, #ffd700 0 10deg, transparent 10deg 20deg, #ff5e62 20deg 30deg, transparent 30deg 40deg);
+    border-radius: 50%;
+    opacity: 0.18;
+    filter: blur(2px) brightness(1.2);
+    animation: burstSpin 12s linear infinite;
+}
+@keyframes burstSpin {
+    0% { transform: translate(-50%, -54%) scale(1.1) rotate(0deg); }
+    100% { transform: translate(-50%, -54%) scale(1.1) rotate(360deg); }
+}
+.comic-sparkles {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 2;
+}
+.comic-sparkles::before, .comic-sparkles::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.22;
+    pointer-events: none;
+    background: radial-gradient(circle, #fff176 0 6px, transparent 7px 32px), radial-gradient(circle, #ffd700 0 4px, transparent 5px 24px);
+    animation: sparkleFloat 7s linear infinite;
+}
+.comic-sparkles::before {
+    width: 120px; height: 120px; left: 12vw; top: 18vh; animation-delay: 0s;
+}
+.comic-sparkles::after {
+    width: 90px; height: 90px; right: 10vw; bottom: 16vh; animation-delay: 3.5s;
+}
+@keyframes sparkleFloat {
+    0% { opacity: 0.22; transform: scale(1) translateY(0); }
+    50% { opacity: 0.38; transform: scale(1.15) translateY(-18px); }
+    100% { opacity: 0.22; transform: scale(1) translateY(0); }
+}
+.comic-caption {
+    display: inline-block;
+    font-family: 'Bangers', 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Comic Neue', cursive, sans-serif;
+    font-size: 2.6rem;
+    color: #fffbe7;
+    background: linear-gradient(90deg, #ff5e62 0%, #ffd700 60%, #fff176 100%);
+    border: 6px solid #222;
+    border-radius: 18px 18px 18px 0;
+    padding: 10px 36px 10px 24px;
+    box-shadow: 4px 4px 0 #222, 0 0 24px #fff17699;
+    transform: rotate(-3deg) translateY(-32px);
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 0 #222, 0 0 8px #fff176;
+    margin-bottom: -18px;
+    position: relative;
+    z-index: 3;
+}
+/* More sparkles */
+.comic-sparkles .sparkle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff176 0 6px, transparent 7px 32px), radial-gradient(circle, #ffd700 0 4px, transparent 5px 24px);
+    opacity: 0.18;
+    pointer-events: none;
+    animation: sparkleFloat 6s linear infinite;
+}
+/* Add 8 random sparkles */
+body.loaded .comic-sparkles {
+    /* JS will add .loaded to body to trigger sparkles */
+}
+.comic-lightning {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 10;
+}
+.comic-lightning svg {
+    filter: drop-shadow(0 0 24px #fff176cc) drop-shadow(0 0 48px #ffd70099);
+    opacity: 0.85;
+    animation: lightningFlash 0.6s cubic-bezier(.36,.07,.19,.97);
+}
+@keyframes lightningFlash {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+.comic-confetti {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 20;
+    overflow: visible;
+}
+.confetti-piece {
+    position: absolute;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    opacity: 0.85;
+    animation: confettiDrop 1.2s cubic-bezier(.36,.07,.19,.97) forwards;
+    transform: rotate(0deg);
+}
+@keyframes confettiDrop {
+    0% { top: 0; opacity: 1; transform: rotate(0deg) scale(1); }
+    80% { opacity: 1; }
+    100% { top: 80vh; opacity: 0; transform: rotate(180deg) scale(0.7); }
+}
+#diceImages img.comic-glow {
+    box-shadow: 0 0 32px 8px #fff176cc, 0 0 0 4px #ffd700, 2px 2px 8px #2226;
+    animation: diceGlow 0.7s cubic-bezier(.36,.07,.19,.97);
+}
+@keyframes diceGlow {
+    0% { box-shadow: 0 0 0 0 #fff176cc, 0 0 0 0 #ffd700, 2px 2px 8px #2226; }
+    60% { box-shadow: 0 0 48px 16px #fff176cc, 0 0 0 8px #ffd700, 2px 2px 8px #2226; }
+    100% { box-shadow: 0 0 32px 8px #fff176cc, 0 0 0 4px #ffd700, 2px 2px 8px #2226; }
+}
+.comic-action-word {
+    display: block;
+    font-family: 'Bangers', 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Comic Neue', cursive, sans-serif;
+    font-size: 2.8rem;
+    color: #ff5e62;
+    text-shadow: 3px 3px 0 #222, 0 0 12px #fff17699;
+    letter-spacing: 2px;
+    margin-bottom: 0.2em;
+    margin-top: 0.2em;
+    opacity: 0;
+    transform: scale(0.7) rotate(-8deg);
+    transition: opacity 0.18s, transform 0.18s;
+    pointer-events: none;
+    position: relative;
+    z-index: 4;
+}
+.comic-action-word.show {
+    opacity: 1;
+    transform: scale(1.18) rotate(-8deg);
+    animation: actionPop 0.5s cubic-bezier(.36,.07,.19,.97);
+}
+@keyframes actionPop {
+    0% { opacity: 0; transform: scale(0.7) rotate(-8deg); }
+    60% { opacity: 1; transform: scale(1.25) rotate(-8deg); }
+    100% { opacity: 1; transform: scale(1.18) rotate(-8deg); }
+}
+#diceResult.pop {
+    animation: popBubble 0.5s cubic-bezier(.36,.07,.19,.97);
+}
+.comic-caption.bounce {
+    animation: captionBounce 0.7s cubic-bezier(.36,.07,.19,.97);
+}
+@keyframes captionBounce {
+    0% { transform: rotate(-3deg) translateY(-32px) scale(1); }
+    30% { transform: rotate(-3deg) translateY(-38px) scale(1.18); }
+    60% { transform: rotate(-3deg) translateY(-28px) scale(0.95); }
+    100% { transform: rotate(-3deg) translateY(-32px) scale(1); }
+}
+.comic-rays {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 320px;
+    height: 180px;
+    transform: translateX(-50%) translateY(-60px);
+    z-index: 2;
+    pointer-events: none;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.18s;
+}
+.comic-rays.show {
+    opacity: 1;
+    animation: raysBurst 0.7s cubic-bezier(.36,.07,.19,.97);
+}
+.comic-rays::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 320px;
+    height: 180px;
+    transform: translate(-50%, -50%);
+    background: repeating-conic-gradient(from 0deg, #ffd700 0 10deg, transparent 10deg 20deg, #ff5e62 20deg 30deg, transparent 30deg 40deg);
+    border-radius: 50%;
+    opacity: 0.22;
+    filter: blur(1.5px) brightness(1.2);
+}
+@keyframes raysBurst {
+    0% { opacity: 0; transform: scale(0.7) translateX(-50%) translateY(-60px); }
+    60% { opacity: 1; transform: scale(1.15) translateX(-50%) translateY(-60px); }
+    100% { opacity: 1; transform: scale(1) translateX(-50%) translateY(-60px); }
+}
+.comic-splat {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 120px;
+    height: 60px;
+    transform: translate(-50%, -60%) scale(0.8) rotate(-8deg);
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(circle at 60% 40%, #fff176 0 40px, #ff5e62 40px 60px, transparent 60px 100%);
+    border-radius: 60% 80% 60% 80% / 60% 60% 80% 80%;
+    opacity: 0.22;
+    filter: blur(1.5px) brightness(1.2);
+    transition: transform 0.18s, opacity 0.18s;
+}
+.comic-splat.splat-animate {
+    opacity: 0.5;
+    transform: translate(-50%, -60%) scale(1.15) rotate(-8deg);
+    animation: splatPop 0.5s cubic-bezier(.36,.07,.19,.97);
+}
+@keyframes splatPop {
+    0% { opacity: 0.2; transform: translate(-50%, -60%) scale(0.7) rotate(-8deg); }
+    60% { opacity: 0.6; transform: translate(-50%, -60%) scale(1.25) rotate(-8deg); }
+    100% { opacity: 0.5; transform: translate(-50%, -60%) scale(1.15) rotate(-8deg); }
+}
+.comic-jump {
+    animation: diceJump 0.5s cubic-bezier(.36,.07,.19,.97);
+}
+@keyframes diceJump {
+    0% { transform: translateY(40px) scale(0.7) rotate(var(--tilt, 0deg)); opacity: 0; }
+    60% { transform: translateY(-12px) scale(1.15) rotate(var(--tilt, 0deg)); opacity: 1; }
+    100% { transform: translateY(0) scale(1) rotate(var(--tilt, 0deg)); opacity: 1; }
+}
+#rollBtn.squash {
+    animation: btnSquash 0.4s cubic-bezier(.36,.07,.19,.97);
+}
+@keyframes btnSquash {
+    0% { transform: scale(1,1); }
+    30% { transform: scale(1.18,0.7); }
+    60% { transform: scale(0.92,1.18); }
+    100% { transform: scale(1,1); }
 }
