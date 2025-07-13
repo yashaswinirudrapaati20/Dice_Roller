@@ -3,18 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dice Roller</title>
+    <title>DiceRoller</title>
     <link rel="stylesheet" href="style2.css">
 </head>
 <body>
-    <div id="container">
-        <h1>Dice Roller</h1>
-        <label> Choose the number of Dice:</label>
-        <input type="number" value="1" min="1" max="6"id="textbox">
-        <button onclick=rollDice()>Roll Dice</button>
-        <div id="diceResult"></div>
-        <div id="diceImages"></div>
+    <div class="animated-bg">
+      <div class="comic-words">
+        <span>BAM!</span>
+        <span>WOW!</span>
+        <span>ZAP!</span>
+      </div>
     </div>
-   <script src="DiceRoller.js"></script>
+    <div class="comic-burst"></div>
+    <div id="container">
+      <span class="comic-caption" id="comicCaption">THE MIGHTY DICE ROLLER!</span>
+      <h1>Dice Roller</h1>
+      <label> Choose the number of Dice:</label>
+      <input type="number" value="1" min="1" max="6" id="textbox">
+      <button id="rollBtn" onclick="rollDice()">Roll Dice</button>
+      <span class="comic-action-word" id="comicActionWord"><span class="comic-splat"></span></span>
+      <div class="comic-rays" id="comicRays"></div>
+      <div id="diceResult"></div>
+      <div id="diceImages"></div>
+    </div>
+
+    <audio id="sound-bam" src="bam.mp3" preload="auto"></audio>
+    <audio id="bgm" src="bgm.mp3" preload="auto" loop></audio>
+    <audio id="sound-btn" src="button.mp3" preload="auto"></audio>
+    <button id="bgmToggle" onclick="toggleBGM()" style="position:fixed;top:18px;right:18px;z-index:1000;font-size:1.2rem;padding:8px 18px;border-radius:12px;border:2px solid #222;background:#fffbe7;color:#222;box-shadow:2px 2px 0 #222;cursor:pointer;">🔊 Music</button>
+    <script>
+    let bgmStarted = false;
+    document.getElementById('rollBtn').addEventListener('click', function(e) {
+        // Play button sound effect
+        const btnSound = document.getElementById('sound-btn');
+        if (btnSound) { btnSound.currentTime = 0; btnSound.play(); }
+    });
+    function rollDice(){
+        if (!bgmStarted) { startBGM(); bgmStarted = true; }
+        const numOfDice=document.getElementById("textbox").value;
+        const diceResult=document.getElementById("diceResult");
+        const dicImage=document.getElementById("diceImages");
+        const caption=document.getElementById("comicCaption");
+        const actionWord=document.getElementById("comicActionWord");
+        const rays=document.getElementById("comicRays");
+        const rollBtn=document.getElementById("rollBtn");
+        const values=[];
+        const images=[];
+        // Random comic action words
+        const words = ["BAM!", "WOW!", "ZAP!", "POW!", "BOOM!", "WHAM!"];
+        const chosenWord = words[Math.floor(Math.random()*words.length)];
+        actionWord.childNodes[0] ? actionWord.childNodes[0].nodeValue = chosenWord : actionWord.insertBefore(document.createTextNode(chosenWord), actionWord.firstChild);
+        actionWord.classList.remove('show');
+        void actionWord.offsetWidth;
+        actionWord.classList.add('show');
+        // Animate splat
+        const splat = actionWord.querySelector('.comic-splat');
+        if (splat) {
+          splat.classList.remove('splat-animate');
+          void splat.offsetWidth;
+          splat.classList.add('splat-animate');
+        }
+        // Animate rays
+        rays.classList.remove('show');
+        void rays.offsetWidth;
+        rays.classList.add('show');
+        for(let i=0;i<numOfDice;i++){
+            const val=Math.floor(Math.random()*6)+1;
+            values.push(val);
+            // Random tilt for each die
+            const tilt = (Math.random()*24-12).toFixed(1);
+            images.push(`<img src=\"diceImages/${val}.png\" style=\"transform:rotate(${tilt}deg)\" class=\"comic-jump\">`)
+        }
+        diceResult.textContent=`dice:${values.join(',')}`;
+        diceResult.classList.remove('pop');
+        void diceResult.offsetWidth;
+        diceResult.classList.add('pop');
+        dicImage.innerHTML=images.join("");
+        // Animate dice jump
+        setTimeout(()=>{
+          Array.from(dicImage.querySelectorAll('img')).forEach(img => {
+            img.classList.remove('comic-jump');
+            void img.offsetWidth;
+            img.classList.add('comic-jump');
+          });
+        }, 10);
+        // Caption bounce
+        caption.classList.remove('bounce');
+        void caption.offsetWidth;
+        caption.classList.add('bounce');
+        // Button squash
+        rollBtn.classList.remove('squash');
+        void rollBtn.offsetWidth;
+        rollBtn.classList.add('squash');
+        // Play comic sound
+        const sound = document.getElementById('sound-bam');
+        if (sound) { sound.currentTime = 0; sound.play(); }
+    }
+    function startBGM() {
+        const bgm = document.getElementById('bgm');
+        if (bgm.paused) { bgm.volume = 0.5; bgm.play(); }
+    }
+    function toggleBGM() {
+        const bgm = document.getElementById('bgm');
+        const btn = document.getElementById('bgmToggle');
+        if (bgm.paused) {
+            bgm.play();
+            btn.textContent = '🔊 Music';
+        } else {
+            bgm.pause();
+            btn.textContent = '🔇 Music';
+        }
+    }
+    </script>
 </body>
 </html>
